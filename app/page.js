@@ -21,11 +21,20 @@ export default function Home() {
                     buttonText={"View stores nearby"}
                     handleOnClick={onClickBanner}
                 />
-                <Card
-                    name="DarkHorse Coffee"
-                    imgUrl="/coffee-img.jpg"
-                    href="/coffee-store/darkhorse-coffee"
-                />
+                <div className={styles.cardLayout}>
+                    <Card
+                        className={styles.card}
+                        name="DarkHorse Coffee"
+                        imgUrl="/coffee-img.jpg"
+                        href="/coffee-store/darkhorse-coffee"
+                    />
+                    <Card
+                        className={styles.card}
+                        name="DarkHorse Coffee"
+                        imgUrl="/coffee-img.jpg"
+                        href="/coffee-store/darkhorse-coffee"
+                    />
+                </div>
             </main>
         </div>
     );
