@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import Banner from "./Banner/Banner.js";
 import Head from "next/head";
+import Card from "./Card/page";
 
 export default function Home() {
     const onClickBanner = () => {
@@ -19,6 +20,11 @@ export default function Home() {
                 <Banner
                     buttonText={"View stores nearby"}
                     handleOnClick={onClickBanner}
+                />
+                <Card
+                    name="DarkHorse Coffee"
+                    imgUrl="/coffee-img.jpg"
+                    href="/coffee-store/darkhorse-coffee"
                 />
             </main>
         </div>
