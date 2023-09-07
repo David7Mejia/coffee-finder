@@ -5,7 +5,6 @@ import Link from "next/link";
 
 const CoffeeShop = () => {
     const params = useParams();
-    console.log("params", params);
     return (
         <div>
             <Link href="/">Back to Home</Link>

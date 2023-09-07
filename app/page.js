@@ -5,11 +5,21 @@ import styles from "./page.module.css";
 import Banner from "./Banner/Banner.js";
 import Head from "next/head";
 import Card from "./Card/page";
+import coffeeStores from "./data/coffee-stores.json";
 
-export default function Home() {
+export async function getCoffeeStores() {
+    // const res = await fetch(`https://...`);
+    // const projects = await res.json();
+
+    return coffeeStores;
+}
+
+export default async function Home() {
     const onClickBanner = () => {
         console.log("Banner button click");
     };
+    const coffeeStores = await getCoffeeStores();
+
     return (
         <div className={styles.container}>
             <Head>
@@ -21,19 +31,23 @@ export default function Home() {
                     buttonText={"View stores nearby"}
                     handleOnClick={onClickBanner}
                 />
+                <div className={styles.heroImage}></div>
+                {coffeeStores.length > 0 && (
+                    <div>
+
+                    <h2 className={styles.heading2}>Toronto Stores</h2>
+                    </div>
+                )}
                 <div className={styles.cardLayout}>
-                    <Card
-                        className={styles.card}
-                        name="DarkHorse Coffee"
-                        imgUrl="/coffee-img.jpg"
-                        href="/coffee-store/darkhorse-coffee"
-                    />
-                    <Card
-                        className={styles.card}
-                        name="DarkHorse Coffee"
-                        imgUrl="/coffee-img.jpg"
-                        href="/coffee-store/darkhorse-coffee"
-                    />
+                    {coffeeStores?.map((coffeeStore, i) => (
+                        <Card
+                            key={i}
+                            className={styles.card}
+                            name={coffeeStore.name}
+                            imgUrl={coffeeStore.imgUrl}
+                            href={`coffee-store/${coffeeStore.id}`}
+                        />
+                    ))}
                 </div>
             </main>
         </div>
